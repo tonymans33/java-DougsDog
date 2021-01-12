@@ -1,3 +1,6 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 // Remote class to make the man and wife control the door remotely
 public class Remote {
 
@@ -15,6 +18,16 @@ public class Remote {
             door.close();
         }else {
             door.open();
+
+            // After opening the door, wait 5 sec and then close it automatically
+            final Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    door.close();
+                    timer.cancel();
+                }
+            }, 5000);
         }
 
     }
