@@ -18,16 +18,6 @@ public class Remote {
             door.close();
         }else {
             door.open();
-
-            // After opening the door, wait 5 sec and then close it automatically
-            final Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    door.close();
-                    timer.cancel();
-                }
-            }, 5000);
         }
 
     }
