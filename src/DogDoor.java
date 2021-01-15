@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -5,10 +7,19 @@ import java.util.TimerTask;
 public class DogDoor {
 
     private boolean open;
+    private List<Bark> allowedBarks = new ArrayList<Bark>();
 
     // A constructor that create a new door and init it to false
     public DogDoor(){
         this.open = false;
+    }
+
+    public void addAllowedBarks(Bark allowedBark) {
+        allowedBarks.add(allowedBark);
+    }
+
+    public List<Bark> getAllowedBarks() {
+        return allowedBarks;
     }
 
     public void open(){
