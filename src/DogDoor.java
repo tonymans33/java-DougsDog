@@ -5,10 +5,19 @@ import java.util.TimerTask;
 public class DogDoor {
 
     private boolean open;
+    private Bark allowedBark;
 
     // A constructor that create a new door and init it to false
     public DogDoor(){
         this.open = false;
+    }
+
+    public void setAllowedBark(Bark allowedBark) {
+        this.allowedBark = allowedBark;
+    }
+
+    public Bark getAllowedBark() {
+        return allowedBark;
     }
 
     public void open(){
