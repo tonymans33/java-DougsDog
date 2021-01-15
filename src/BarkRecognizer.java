@@ -6,9 +6,13 @@ public class BarkRecognizer {
         this.door = door;
     }
 
-    public void recognize(String bark){
+    public void recognize(Bark bark){
         System.out.println("Bark Recognizer heard a ' " + bark + " ' ");
-        door.open();
+        if(door.getAllowedBark().equals(bark)){
+            door.open();
+        }else {
+            System.out.println("Bark is not allowed");
+        }
     }
 
 }
