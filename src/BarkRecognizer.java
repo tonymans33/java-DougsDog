@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.List;
+
 public class BarkRecognizer {
 
     private DogDoor door;
@@ -7,12 +10,20 @@ public class BarkRecognizer {
     }
 
     public void recognize(Bark bark){
-        System.out.println("Bark Recognizer heard a ' " + bark + " ' ");
-        if(door.getAllowedBark().equals(bark)){
-            door.open();
-        }else {
-            System.out.println("Bark is not allowed");
+        System.out.println("Bark Recognizer heard a ' " + bark.getSound() + " ' ");
+        List allowedBarks = door.getAllowedBarks();
+
+        for(Iterator i = allowedBarks.iterator() ; i.hasNext() ;){
+            Bark allowedBark = (Bark)i.next();
+            if(allowedBark.equals(bark)){
+                door.open();
+                return;
+            }
+
         }
+
+        System.out.println("Bark is not allowed");
+
     }
 
 }
